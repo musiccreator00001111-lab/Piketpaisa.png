@@ -1,1 +1,73 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="dw3QRR89B6z0EFgVHjmKcMzHkIZO3S9763s3pr0I3i8" />
+    <link rel="icon" href="https://fav.farm/💰" />
+    <title>PocketPaisa Pro - Smart Money Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<audio id="sirenSound" src="https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg" preload="auto" loop></audio>
+<audio id="warningSound" src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg" preload="auto"></audio>
+
+<div class="app-container">
+    <div class="header-area">
+        <h2>💰 PocketPaisa Pro</h2>
+        <button class="three-dot-btn" onclick="toggleSettings()">⋮</button>
+    </div>
+
+    <div class="settings-menu" id="settingsMenu">
+        <div class="settings-row">
+            <label id="langLabelCurrency">Select Currency:</label>
+            <select id="currencySelect" onchange="changeCurrency()"><option value="₹">INR (₹)</option><option value="$">USD ($)</option><option value="€">EUR (€)</option><option value="£">GBP (£)</option></select>
+        </div>
+        <div class="settings-row">
+            <label id="langLabelLanguage">Select Language:</label>
+            <select id="languageSelect" onchange="changeLanguage()"><option value="hi">Hindi (हिंदी)</option><option value="en">English</option></select>
+        </div>
+        <div class="top-utility-bar">
+            <button class="btn-utility" onclick="toggleDarkMode()">🌓 Dark Mode</button>
+            <button class="btn-utility btn-reset-data" onclick="resetAllData()" id="langResetBtn">🗑️ Reset App</button>
+        </div>
+    </div>
+
+    <div class="warning-banner warn-95" id="warn95Banner">⚠️ WARNING: Budget 95% spent!</div>
+    <div class="warning-banner warn-over" id="warnOverBanner">🚨 CRITICAL ALERT: Budget Exceeded!</div>
+
+    <div class="dashboard-grid">
+        <div class="card salary-card"><p id="langSalaryLabel">Monthly Salary/Limit</p><h3 id="salaryDisplay">₹0.00</h3></div>
+        <div class="card balance-card"><p id="langBalanceLabel">Remaining Balance</p><h3 id="balanceDisplay">₹0.00</h3></div>
+    </div>
+
+    <div class="input-group" id="salaryBox">
+        <label for="salaryInput" id="langSetSalaryLabel">Set/Change Monthly Salary:</label>
+        <input type="number" id="salaryInput" placeholder="Enter amount">
+        <button class="btn-set" onclick="setSalary()" id="langUpdateSalaryBtn">Update Salary</button>
+    </div>
+
+    <div class="input-group">
+        <label for="amount" id="langAmountLabel">Amount</label>
+        <input type="number" id="amount" placeholder="e.g. 500">
+    </div>
+    <div class="input-group">
+        <label for="category" id="langCategoryLabel">Category / Description</label>
+        <input type="text" id="category" placeholder="e.g. Food, Bike, Tophy">
+    </div>
+
+    <div class="btn-container">
+        <button class="btn-income" onclick="addTransaction('income')" id="langIncomeBtn">+ Add Income</button>
+        <button class="btn-expense" onclick="addTransaction('expense')" id="langExpenseBtn">- Add Expense</button>
+    </div>
+
+    <div class="history-section">
+        <h3 id="langPassbookLabel">Transaction Passbook</h3>
+        <ul class="transaction-list" id="transactionList"></ul>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
